@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//【テーマ】delegateには+=が使えて、関数の実行が複数できることを見よう
 
 public class OriginalDelegate : MonoBehaviour
 {
@@ -19,8 +18,6 @@ public class OriginalDelegate : MonoBehaviour
             Debug.Log("力尽きた！");
         }
     }
-    // Step1: 渡されたint型の値を表示するだけの、【戻り値なし】【引数int num】
-    // の関数ShowNumを定義してください。
     void ShowNum(int num)
     {
         Debug.Log(num);
@@ -30,6 +27,7 @@ public class OriginalDelegate : MonoBehaviour
     [SerializeField] Text _hpText;//HP表示テキスト
     void Update()
     {
+        //CheckDeadのみ実行
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Check checker = null;
@@ -37,26 +35,17 @@ public class OriginalDelegate : MonoBehaviour
             checker?.Invoke(_hp);
         }
 
-        // Step2: Dキーが押されたら
+        //ShowNumとCheckDeadを実行ののち、ShowNumのみ実行
         if (Input.GetKeyDown(KeyCode.D))
         {
-            // Step3: Check型 checkerを宣言しnull代入
             Check checker = null;
 
-            // Step4: checkerにShowNumを代入
             checker = ShowNum;
-
-            // Step5: checkerにCheckDeadを足す（+=を使う）
             checker += CheckDead;
-
-            // Step6: 非nullチェックをしつつInvokeでcheckerに_hpを渡して実行（どうなってる？）
             checker?.Invoke(_hp);
 
-            // Step7: checkerに改めてShowNumを代入（するとStep8の結果はどうなる？）
             checker = ShowNum;
-
-            // Step8: Step6のコピー
-            checker?.Invoke(_hp);//Step7で再代入したため、ShowNumのみしか実行されていないことを確認
+            checker?.Invoke(_hp);
         }
 
         ShowHP();
