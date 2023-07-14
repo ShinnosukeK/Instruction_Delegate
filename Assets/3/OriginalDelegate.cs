@@ -21,7 +21,10 @@ public class OriginalDelegate : MonoBehaviour
     }
     // Step1: 渡されたint型の値を表示するだけの、【戻り値なし】【引数int num】
     // の関数ShowNumを定義してください。
-
+    void ShowNum(int num)
+    {
+        Debug.Log(num);
+    }
 
     int _hp = 100;//playerのHP
     [SerializeField] Text _hpText;//HP表示テキスト
@@ -35,25 +38,25 @@ public class OriginalDelegate : MonoBehaviour
         }
 
         // Step2: Dキーが押されたら
-        if ()
+        if (Input.GetKeyDown(KeyCode.D))
         {
             // Step3: Check型 checkerを宣言しnull代入
-
+            Check checker = null;
 
             // Step4: checkerにShowNumを代入
-
+            checker = ShowNum;
 
             // Step5: checkerにCheckDeadを足す（+=を使う）
-
+            checker += CheckDead;
 
             // Step6: 非nullチェックをしつつInvokeでcheckerに_hpを渡して実行（どうなってる？）
-
+            checker?.Invoke(_hp);
 
             // Step7: checkerに改めてShowNumを代入（するとStep8の結果はどうなる？）
-
+            checker = ShowNum;
 
             // Step8: Step6のコピー
-
+            checker?.Invoke(_hp);//Step7で再代入したため、ShowNumのみしか実行されていないことを確認
         }
 
         ShowHP();
