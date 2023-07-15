@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 // Step1: Predicate使用のために、名前空間using Systemをする必要がある
-
+using System;
 
 public class TestPredicate : MonoBehaviour
 {
@@ -18,12 +18,12 @@ public class TestPredicate : MonoBehaviour
     // Step2: もうdelegateの定義はPredicateが行っているので、それを使って宣言するだけです。
     // ただ、Predicateの引数の型は自由なので、
     // Predicate<int>というようにして教えてあげる必要があります。変数名はpredicateとします。
-    
+    Predicate<int> predicate;
 
     // Step3: 戻り値なし、引数①Predicate<int>型のpredicate、引数②int num
-    ここに書く() {
+    void Check(Predicate<int> predicate, int num) {
         // Step4: predicateをInvokeする。引数にnumを与える。
-        if() {
+        if((bool)predicate?.Invoke(num)) {
             Debug.Log("条件OK");
         } else {
             Debug.Log("条件NG");
@@ -34,10 +34,11 @@ public class TestPredicate : MonoBehaviour
         int hp = 20000;
 
         // Step5: predicateにCanDefeatZakoとCanDefeatBossを追加
-        
+        predicate += CanDefeatZako;
+        predicate += CanDefeatBoss;
 
         // Step6: Check関数にpredicateとhpを渡して実行
-        
+        Check(predicate, hp);
     }
 
     //前の問題で作った、intを引数としてboolを返す関数
