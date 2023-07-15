@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+//ydelegate—p“r1zif•¶‚ÌğŒ®‚ğ·‚µ‘Ö‚¦‚é–Ú“I‚Åg—p
+public class HowToUseDelegate1 : MonoBehaviour
+{
+    // Step1: –ß‚è’lboolŒ^Aˆø”intŒ^num‚Ìdelegate Checker‚ğ’è‹`
+    
+
+    // Step2: –ß‚è’l‚È‚µAˆø”‚ğ‡@delegate CheckerŒ^A‡AintŒ^num‚ğæ‚ê‚éCheckŠÖ”‚ğ’è‹`
+    void Check(‚±‚±‚É’Ç‹L) {
+        // Step3: if•¶ğŒ”»’è‚ÉAInvoke‚Énum‚ğ—^‚¦‚Ä—˜—p‚·‚é
+        // ’Ê‰ß‚µ‚½‚çuˆø”(numjOKvƒ_ƒ‚È‚çuˆø”(num)NGv‚Æo—Í
+        
+    }
+
+    void Start() {
+        int hp = 5000;
+
+        // Step4: CheckerŒ^checker‚ğ’è‹`‚µACanDefeatZako‚ğ‘ã“ü
+        
+
+        // Step5: CheckŠÖ”‚ÉAchecker‚Æhp‚ğ—^‚¦‚ÄŒÄ‚Ô
+        
+
+        // Step6: checker‚ÉCanDefeatBoss‚ğÄ‘ã“ü
+        
+
+        // Step7: CheckŠÖ”‚ÉAchecker‚Æhp‚ğ—^‚¦‚ÄŒÄ‚Ô
+        
+    }
+
+    //‘O‚Ì–â‘è‚Åì‚Á‚½Aint‚ğˆø”‚Æ‚µ‚Äbool‚ğ•Ô‚·ŠÖ”
+    bool CanDefeatBoss(int hp) {
+        if(hp >= 10000) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    bool CanDefeatZako(int hp) {
+        if(hp >= 100) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
