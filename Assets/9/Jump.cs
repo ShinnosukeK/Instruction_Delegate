@@ -10,7 +10,7 @@ public class Jump : MonoBehaviour
     // Step2: eventキーワードを追加
     // これにより、外部から代入も実行もできなくなっており、
     // もとのスクリプト側でエラーとなっていることを確認しよう
-    public JumpHandler OnJumped;
+    public event JumpHandler OnJumped;
 
     void Update() {
         if(Input.GetKeyDown(KeyCode.Space)) {

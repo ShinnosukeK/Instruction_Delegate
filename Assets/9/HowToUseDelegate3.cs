@@ -25,7 +25,7 @@ public class HowToUseDelegate3 : MonoBehaviour
         // Jumpスクリプト側に実行処理を分ける意味がないじゃん、という話になってしまう。
         // まずはこのまま実行してみて、確かにJumpEvent1のみになってしまっているし、
         // 実行も行えてしまっていることを確認しましょう。
-        jump.OnJumped = JumpEvent1;
-        jump.OnJumped?.Invoke();
+        //jump.OnJumped = JumpEvent1; →error
+        //jump.OnJumped?.Invoke();    →error
     }
 }
