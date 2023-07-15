@@ -8,10 +8,10 @@ using UnityEngine;
 public class HowToUseDelegate2 : MonoBehaviour
 {
     // Step1: 戻り値なし、引数なしのdelegate StartDelegateを定義
-    
+    public delegate void StartDelegate();
 
     // Step2: 戻り値なし、引数なしのInitPlayer関数を定義
-    ここに書いてください() {
+    void InitPlayer() {
         /*
          * 
          * player作成処理...
@@ -21,7 +21,7 @@ public class HowToUseDelegate2 : MonoBehaviour
     }
 
     // Step3: 戻り値なし、引数なしのInitEnemies関数を定義
-    ここに書いてください() {
+    void InitEnemies() {
         /*
          * 
          * Enemy作成処理...
@@ -31,7 +31,7 @@ public class HowToUseDelegate2 : MonoBehaviour
     }
 
     // Step4: 戻り値なし、引数StartDelegate型startDelegateの、Initialize関数を定義
-    ここに書いてください() {
+    private void Initialize(StartDelegate startDelegate) {
         /*
          * 
          * 様々な初期化処理...
@@ -39,20 +39,20 @@ public class HowToUseDelegate2 : MonoBehaviour
          */
 
         // Step5: startDelegateをInvokeで実行
-        
+        startDelegate?.Invoke();
     }
 
     void Start() {
         // Step6: StartDelegate型のstartDelegate変数を定義
-        
+        StartDelegate startDelegate = null;
 
         // Step7: startDelegateに対してInitPlayerを代入
-        
+        startDelegate = InitPlayer;
 
         // Step8: startDelegateに対してInitEnemiesを加える(+=)
-        
+        startDelegate += InitEnemies;
 
         // Step9: Initialize関数に、ここまでで作ったstartDelegateを与えて実行してもらう
-        
+        Initialize(startDelegate);//必要な初期化処理をまとめて、委譲している
     }
 }
